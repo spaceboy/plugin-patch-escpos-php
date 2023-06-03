@@ -1,0 +1,20 @@
+{
+  "name": "spaceboy/plugin-patch-escpos-php",
+  "type": "composer-plugin",
+  "require": {
+    "composer-plugin-api": "^2.0"
+  },
+  "require-dev": {
+    "composer/composer": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Spaceboy\\Plugins\\PatchEscposPhpPlugin\\": [
+        "src/"
+      ]
+    }
+  },
+  "extra": {
+    "class": "Spaceboy\\Plugins\\PatchEscposPhpPlugin\\Plugin"
+  }
+}
