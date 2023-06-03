@@ -1,0 +1,31 @@
+{
+  "target": "vendor/mike42/escpos-php/src/Mike42/Escpos/Printer.php",
+  "eol": "lf",
+  "hash": "08e88113f67759a933047f7f82d5425a",
+  "changes":[
+    {
+      "lineFrom": 22,
+      "lineTo": 22,
+      "replace": [
+        " * Main class for ESC/POS code generation;",
+        " * modified by spaceboy (22)."
+      ]
+    },
+    {
+      "lineFrom": 32,
+      "lineTo": 32,
+      "replace": [
+        "     * ASCII linefeed control character,",
+        "     * modified by spaceboy (32)."
+      ]
+    },
+    {
+      "lineFrom": 27,
+      "lineTo": 27,
+      "replace": [
+        "     * ASCII null control character;",
+        "     * modified by spaceboy (27)."
+      ]
+    }
+  ]
+}

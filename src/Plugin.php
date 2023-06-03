@@ -20,7 +20,7 @@ final class Plugin implements PluginInterface, EventSubscriberInterface
   /** @var string[] Seznam souboru JSON obsahujicich prikazy k jednotlivym zmenam. */
   // TODO: Vyresit dir (pouzit absolutni cestu?)
   private const REQUESTS = [
-    __DIR__ . '/files/vendor/mike42/escpos-php/src/Mike42/Escpos/Printer.json',
+    __DIR__ . '/../files/vendor/mike42/escpos-php/src/Mike42/Escpos/Printer.json',
     //__DIR__ . '/files/vendor/mike42/escpos-php/src/Mike42/Escpos/GdEscposImage.json',
     //__DIR__ . '/files/vendor/mike42/escpos-php/src/Mike42/Escpos/EscposImage.json',
   ];
@@ -107,6 +107,7 @@ final class Plugin implements PluginInterface, EventSubscriberInterface
     // TODO: Po vytvoření balíčku univerzálního měniče souborů (nazvaného např. Patchwork(?))
     // TODO: místo tohohle kódu volat Patchwork::makeChanges($this->io, $this->composer(?), self::REQUESTS)
     // TODO: Možná přidat i název měněného balíčku?
+    \Sportisimo\Ecommerce\StockAdmin\Changes\ChangeProvider::makeChanges($this->io, self::REQUESTS);
   }
 
   /**
@@ -125,5 +126,6 @@ final class Plugin implements PluginInterface, EventSubscriberInterface
     // TODO: Po vytvoření balíčku univerzálního měniče souborů (nazvaného např. Patchwork(?))
     // TODO: místo tohohle kódu volat Patchwork::makeChanges($this->io, $this->composer(?), self::REQUESTS).
     // TODO: Možná přidat i název měněného balíčku?
+    \Sportisimo\Ecommerce\StockAdmin\Changes\ChangeProvider::makeChanges($this->io, self::REQUESTS);
   }
 }
