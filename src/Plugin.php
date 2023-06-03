@@ -9,7 +9,7 @@ use Composer\Plugin\PluginInterface;
 use Composer\Script\ScriptEvents;
 
 /**
- * Class Plugin
+ * Plugin pro konkretni zmeny.
  *
  * @copyright (c) 2023 Sportisimo s.r.o.
  * @author        Jiri Votocek
@@ -17,6 +17,14 @@ use Composer\Script\ScriptEvents;
  */
 final class Plugin implements PluginInterface, EventSubscriberInterface
 {
+  /** @var string[] Seznam souboru JSON obsahujicich prikazy k jednotlivym zmenam. */
+  // TODO: Vyresit dir (pouzit absolutni cestu?)
+  private const REQUESTS = [
+    __DIR__ . '/files/vendor/mike42/escpos-php/src/Mike42/Escpos/Printer.json',
+    //__DIR__ . '/files/vendor/mike42/escpos-php/src/Mike42/Escpos/GdEscposImage.json',
+    //__DIR__ . '/files/vendor/mike42/escpos-php/src/Mike42/Escpos/EscposImage.json',
+  ];
+
   /** @var Composer Composer. */
   private Composer $composer;
 
@@ -81,5 +89,41 @@ final class Plugin implements PluginInterface, EventSubscriberInterface
       ScriptEvents::POST_INSTALL_CMD => 'onPostInstall',
       ScriptEvents::POST_UPDATE_CMD => 'onPostUpdate',
     ];
+  }
+
+  /**
+   * Metoda volana po instalaci.
+   *
+   * @return void
+   */
+  public function onPostInstall(): void
+  {
+    if(!isset($this->io))
+    {
+      echo 'Something went wrong (onPostInstall).' . PHP_EOL;
+    }
+    $this->io->write(__METHOD__);
+
+    // TODO: Po vytvoření balíčku univerzálního měniče souborů (nazvaného např. Patchwork(?))
+    // TODO: místo tohohle kódu volat Patchwork::makeChanges($this->io, $this->composer(?), self::REQUESTS)
+    // TODO: Možná přidat i název měněného balíčku?
+  }
+
+  /**
+   * Metoda volana po update.
+   *
+   * @return void
+   */
+  public function onPostUpdate(): void
+  {
+    if(!isset($this->io))
+    {
+      echo 'Something went wrong (onPostUpdate).' . PHP_EOL;
+    }
+    $this->io->write(__METHOD__);
+
+    // TODO: Po vytvoření balíčku univerzálního měniče souborů (nazvaného např. Patchwork(?))
+    // TODO: místo tohohle kódu volat Patchwork::makeChanges($this->io, $this->composer(?), self::REQUESTS).
+    // TODO: Možná přidat i název měněného balíčku?
   }
 }
